@@ -68,7 +68,7 @@
 [include]
     path = .dotfiles/git/gitaliases
 [user]
-    name = Ming Teo
-    email = ming.teo@foxsports.com.au
+    name = Karuna Baral
+    email = karuna.baral@foxsports.com.au
 #[commit]
-#    template = /Users/ming.teo/.stCommitMsg
+#    template = /Users/karuna.baral/.stCommitMsg
