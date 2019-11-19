@@ -24,7 +24,7 @@ Open Terminal, pre-install things:
 Run this:
 
 ```sh
-git clone https://github.com/karunabaral/dotfiles.git ~/.dotfiles
+git clone git@github.com:karunabaral/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
