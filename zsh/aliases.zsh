@@ -43,7 +43,8 @@ alias networkbounce='sudo networksetup -setv4off Wi-Fi;sudo  networksetup -setdh
 #
 # My aliases
 #
-
+alias repos='cd ~/repos';
+alias dot='cd ~/.dotfiles';
 alias la='ls -laFGh'
 alias ld='echo "ls -flFGhd --color=always test\n" && ls -flFGhd --color=always'
 alias f='echo "grep -IrisHn -C 3 --color=always test ./\n" && grep -IrisHn -C 3 --color=always'
