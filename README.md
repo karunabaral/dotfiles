@@ -2,13 +2,7 @@
 
 ## dotfiles
 
-Your dotfiles are how you personalize your system. These are mine. Forked from Ming's
-
-I was a little tired of having long alias files and everything strewn about
-(which is extremely common on other dotfiles projects, too). That led to this
-project being much more topic-centric. I realized I could split a lot of things
-up into the main areas I used (Ruby, git, system libraries, and so on), so I
-structured the project accordingly.
+Your dotfiles are how you personalize your system. These are mine. Forked from [Ming's](https://github.com/setek/dotfiles)
 
 If you're interested in the philosophy behind why projects like these are
 awesome, you might want to [read Zach Holman’s post on the
@@ -31,8 +25,8 @@ script/bootstrap
 
 Then:
 
-1. Restart computer. Open iTerm2 and ignore Terminal forever.
-1. In Preferences > Profiles > Default (already selected) > General > Command, enter `/bin/zsh`
+1. Restart computer.
+2. Open iTerm2. On Preferences > Profiles > Default (already selected) > General > Command, enter `/bin/zsh`
 
 Now whenever you open iTerm2, it will run `zsh`.
 
