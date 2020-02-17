@@ -148,6 +148,9 @@ alias getperms='echo "stat -f \"%OLp\"\n" && stat -f "%OLp"'
 
 alias killsym='~/bin/sep stop'
 
+# When docker misbehaves... kill everything!
+alias diedockerdie="docker kill $(docker ps -q); docker rm $(docker ps --filter=status=exited --filter=status=created -q); docker rmi $(docker images -a -q) -f"
+
 # unused
 alias runtests='echo "grunt build-tests && testem ci -f test/testem-ci.json -R tap"; grunt build-tests && testem ci -f test/testem-ci.json -R tap'
 alias grw='echo "grunt watcher\n" && grunt watcher'
