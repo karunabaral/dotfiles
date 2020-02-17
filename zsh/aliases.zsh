@@ -148,6 +148,9 @@ alias getperms='echo "stat -f \"%OLp\"\n" && stat -f "%OLp"'
 
 alias killsym='~/bin/sep stop'
 
+# See what ports are used
+alias portcheck="lsof -nP +c 15 | grep LISTEN"
+
 # When docker misbehaves... kill everything!
 alias diedockerdie="docker kill $(docker ps -q); docker rm $(docker ps --filter=status=exited --filter=status=created -q); docker rmi $(docker images -a -q) -f"
 
