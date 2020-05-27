@@ -154,6 +154,9 @@ alias portcheck="lsof -nP +c 15 | grep LISTEN"
 # When docker misbehaves... kill everything!
 alias diedockerdie="docker kill $(docker ps -q); docker rm $(docker ps --filter=status=exited --filter=status=created -q); docker rmi $(docker images -a -q) -f"
 
+# On changing AD password, artifactory password update on docker file
+alias dockerartifactory="docker login https://artifactory.foxsports.com.au:5001"
+
 # unused
 alias runtests='echo "grunt build-tests && testem ci -f test/testem-ci.json -R tap"; grunt build-tests && testem ci -f test/testem-ci.json -R tap'
 alias grw='echo "grunt watcher\n" && grunt watcher'
