@@ -162,3 +162,61 @@ alias runtests='echo "grunt build-tests && testem ci -f test/testem-ci.json -R t
 alias grw='echo "grunt watcher\n" && grunt watcher'
 alias grd='echo "grunt default\n" && grunt default'
 alias grdw='echo "grunt default && grunt watcher\n" && grunt default && echo "\n\n\n\n\n\n\n\n\n\n----- RUNNING WATCHER NOW ------\n\n\n\n\n\n\n\n\n\n" && grunt watcher'
+
+function v {
+    if [ -f package.json ]; then
+        echo `npm version`
+    else
+        print "No package.json detected in this directory"
+        return 1;
+    fi
+
+    if (($# == 0))
+        then
+            echo 'Please specify npm version (patch, minor, major) or specific version'
+            echo 'e.g. "v 1.12.1" or "v major"'
+            return 1;
+    fi
+
+    echo "Updating version: `npm version` to version: $1"
+    echo 'Going to run the following commands:'
+    echo '```'
+    echo '    git fetch'
+    echo '    git checkout develop && git reset --hard origin/develop'
+    echo "    npm version $1"
+    echo '    git checkout master && git reset --hard origin/master'
+    echo '    git merge develop'
+    echo '```'
+
+    echo "I'll ask again before pushing anything to remote. Go ahead and do it? (y/n)"
+    while true; do
+        read doit
+        case $doit in
+            [Yy]* )
+                git fetch && git checkout develop && git reset --hard origin/develop && npm version $1 && git checkout master && git reset --hard origin/master && git merge develop
+                break;;
+            [Nn]* )
+                echo 'Aborting...';
+                return 1;;
+            * )
+                echo 'Please choose y or n';;
+        esac
+    done
+
+    echo "New version: `npm version` tagged. Push develop & master to remote? (y/n)"
+    while true; do
+        read yn
+        case $yn in
+            [Yy]* )
+                git push --tags && git push && git checkout develop && git push
+                break;;
+            [Nn]* )
+                echo 'Try to reset changes on local master/develop using:';
+                echo 'git co develop && git tag -l | xargs git tag -d && git fetch --tags'; # reset tags on develop
+                echo 'git co master && git reset --hard origin/master && git tag -l | xargs git tag -d && git fetch --tags'; # reset master to origin and reset tags
+                return 1;;
+            * )
+                echo 'Please choose y or n';;
+        esac
+    done
+}
