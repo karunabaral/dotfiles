@@ -93,7 +93,6 @@ jspm_packages
 .yarn-integrity
 
 # Node versions
-.nvmrc
 .node-version
 
 ############## JET BRAINS ###############

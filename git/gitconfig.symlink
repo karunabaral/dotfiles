@@ -36,7 +36,7 @@
     changed = green
     untracked = cyan
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = /Users/karuna.baral/.gitignore
     attributesfile = ~/.gitattributes
     editor = nvim
 [apply]
