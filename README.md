@@ -5,13 +5,13 @@ Making it easier to setup new machine!
 
 ## install
 
-### 1. Pre requisities
+### Step 1: Pre requisities
 Open Terminal, pre-install things:
 
 1. Make sure `brew` is installed (`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` or check [Brew website](https://brew.sh/) for the command)
 1. Make sure `git` is installed (should be, but might need to update `brew install git`
 
-### 1. SSH setup
+### Step 2: SSH setup
 If availabe, copy existing SSH keys from old machine. You will need to update the permissions once copied. (If setting up computer for same enterprise)
 `sudo chmod 400 ~/.ssh/id_rsa`
 `sudo chmod 600 ~/.ssh/id_rsa`
@@ -19,7 +19,7 @@ If availabe, copy existing SSH keys from old machine. You will need to update th
 
 Else, generate new keys and add them to GitHub
 
-### 1. Clone this repo and run
+### Step 3: Clone this repo and run
 Run this:
 
 ```sh
