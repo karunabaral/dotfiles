@@ -13,9 +13,12 @@ Open Terminal, pre-install things:
 
 ### Step 2: SSH setup
 If availabe, copy existing SSH keys from old machine. You will need to update the permissions once copied. (If setting up computer for same enterprise)
-`sudo chmod 400 ~/.ssh/id_rsa`
-`sudo chmod 600 ~/.ssh/id_rsa`
-`sudo chmod 644 ~/.ssh/known_hosts`
+
+```ssh
+sudo chmod 400 ~/.ssh/id_rsa
+sudo chmod 600 ~/.ssh/id_rsa
+sudo chmod 644 ~/.ssh/known_hosts
+```
 
 Else, generate new keys and add them to GitHub
 
