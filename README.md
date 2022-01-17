@@ -1,20 +1,25 @@
 # My Dotfiles
 
 ## dotfiles
-
-Your dotfiles are how you personalize your system. These are mine. Forked from [Ming's](https://github.com/setek/dotfiles)
-
-If you're interested in the philosophy behind why projects like these are
-awesome, you might want to [read Zach Holman’s post on the
-subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
+Making it easier to setup new machine!
 
 ## install
 
+### 1. Pre requisities
 Open Terminal, pre-install things:
 
-1. Make sure `git` is installed (should be)
 1. Make sure `brew` is installed (`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` or check [Brew website](https://brew.sh/) for the command)
+1. Make sure `git` is installed (should be, but might need to update `brew install git`
 
+### 1. SSH setup
+If availabe, copy existing SSH keys from old machine. You will need to update the permissions once copied. (If setting up computer for same enterprise)
+`sudo chmod 400 ~/.ssh/id_rsa`
+`sudo chmod 600 ~/.ssh/id_rsa`
+`sudo chmod 644 ~/.ssh/known_hosts`
+
+Else, generate new keys and add them to GitHub
+
+### 1. Clone this repo and run
 Run this:
 
 ```sh
@@ -26,7 +31,7 @@ script/bootstrap
 Then:
 
 1. Restart computer.
-2. Open iTerm2. On Preferences > Profiles > Default (already selected) > General > Command, enter `/bin/zsh`
+1. Open iTerm2. On Preferences > Profiles > Default (already selected) > General > Command, enter `/bin/zsh`
 
 Now whenever you open iTerm2, it will run `zsh`.
 
