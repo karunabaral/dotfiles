@@ -78,6 +78,9 @@ cask 'the-unarchiver'
 cask 'dropbox'
 cask 'google-backup-and-sync'
 
+# Password Management
+cask lastpass
+
 # Chat applications
 cask 'signal'
 cask 'slack'
@@ -87,6 +90,7 @@ cask 'zoomus'
 #cask 'yakyak'
 
 # Music applications
+cask spotify
 #cask 'beardedspice'
 #cask 'radiant-player'
 #cask 'soundcleod'
@@ -125,12 +129,10 @@ cask 'visual-studio-code'
 #cask 'webstorm'
 
 # Mas
-mas '1Password', id: 443987910
 mas 'Battery Monitor: Health, Info', id: 836505650
 mas 'BetterSnapTool', id: 417375580
-mas 'WeChat', id: 836500024
 mas 'Xcode', id: 497799835
-#mas 'Xcode', id: 497799835
+#mas '1Password', id: 443987910
 #mas 'Fantastical 2', id: 975937182
 #mas 'Airmail 3', id: 918858936
 #mas 'Reeder 3', id: 880001334
