@@ -81,6 +81,9 @@ cask 'google-backup-and-sync'
 # Password Management
 cask lastpass
 
+# Image editing
+cask gimp
+
 # Chat applications
 cask 'signal'
 cask 'slack'
