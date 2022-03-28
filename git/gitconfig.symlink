@@ -69,6 +69,13 @@
     path = .dotfiles/git/gitaliases
 [user]
     name = Karuna Baral
-    email = karuna.baral@foxsports.com.au
+	email = karuna.baral@foxtel.com.au
+	signingkey = A8DEEBE8EBBBC860
 #[commit]
 #    template = /Users/karuna.baral/.stCommitMsg
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

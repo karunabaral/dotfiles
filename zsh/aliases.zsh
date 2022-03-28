@@ -61,8 +61,7 @@ alias cm='echo "rm -rf node_modules package-lock.json\n" && rm -rf node_modules 
 alias ss='http-server .'
 alias arti='echo "AD Username: " && read AD_LOGIN && echo "AD Password: " && read -s AD_PASSWORD && curl -u "$AD_LOGIN:$AD_PASSWORD" https://artifactory.foxsports.com.au/api/npm/auth | sed -n "1p" | sed -e "s,_auth = ,,g" | read authstr && printf "{\n  \"auths\" : {\n    \"https://artifactory.foxsports.com.au:5003\" : {\n      \"auth\" : \"" >! ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"artifactory.foxsports.com.au:5001\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"https://artifactory.foxsports.com.au:5001\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"artifactory.foxsports.com.au:5003\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    }\n  }\n}" >> ~/.docker/config.json && unset -v authstr && unset -v AD_LOGIN AD_PASSWORD authstr'
 
-alias sydtime='sudo systemsetup -settimezone Australia/Sydney'
-alias pertime='sudo systemsetup -settimezone Australia/Perth'
+# alias sydtime='sudo systemsetup -settimezone Australia/Sydney'
 
 alias nw='npm-why'
 
@@ -155,13 +154,13 @@ alias portcheck="lsof -nP +c 15 | grep LISTEN"
 alias diedockerdie="docker kill $(docker ps -q); docker rm $(docker ps --filter=status=exited --filter=status=created -q); docker rmi $(docker images -a -q) -f"
 
 # On changing AD password, artifactory password update on docker file
-alias dockerartifactory="docker login https://artifactory.foxsports.com.au:5001"
+# alias dockerartifactory="docker login https://artifactory.foxsports.com.au:5001"
 
 # unused
-alias runtests='echo "grunt build-tests && testem ci -f test/testem-ci.json -R tap"; grunt build-tests && testem ci -f test/testem-ci.json -R tap'
-alias grw='echo "grunt watcher\n" && grunt watcher'
-alias grd='echo "grunt default\n" && grunt default'
-alias grdw='echo "grunt default && grunt watcher\n" && grunt default && echo "\n\n\n\n\n\n\n\n\n\n----- RUNNING WATCHER NOW ------\n\n\n\n\n\n\n\n\n\n" && grunt watcher'
+# alias runtests='echo "grunt build-tests && testem ci -f test/testem-ci.json -R tap"; grunt build-tests && testem ci -f test/testem-ci.json -R tap'
+# alias grw='echo "grunt watcher\n" && grunt watcher'
+# alias grd='echo "grunt default\n" && grunt default'
+# alias grdw='echo "grunt default && grunt watcher\n" && grunt default && echo "\n\n\n\n\n\n\n\n\n\n----- RUNNING WATCHER NOW ------\n\n\n\n\n\n\n\n\n\n" && grunt watcher'
 
 function v {
     if [ -f package.json ]; then
