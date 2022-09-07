@@ -38,22 +38,17 @@
 [core]
 	excludesfile = /Users/karuna.baral/.gitignore
     attributesfile = ~/.gitattributes
- #   editor = nvim
+    editor = vi
 [apply]
     whitespace = nowarn
-[merge]
-    tool = sublimerge
-[mergetool "sublimerge"]
-    cmd = subl -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"
-    trustExitCode = false
-#[diff]
-#    tool = sublimerge
-#[difftool "sublimerge"]
-#    cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
 [diff]
-    tool = vscode-difftool
-[difftool "vscode-difftool"]
+    tool = vscode
+[difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [help]
     autocorrect = 1
 [push]
@@ -77,5 +72,3 @@
  	gpgsign = true
 [tag]
  	gpgSign = true
-#[commit]
-#    template = /Users/karuna.baral/.stCommitMsg
