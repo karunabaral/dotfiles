@@ -69,6 +69,6 @@
 [gpg]
 	format = ssh
 [commit]
- 	gpgsign = true
+	gpgsign = true
 [tag]
  	gpgSign = true

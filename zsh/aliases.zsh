@@ -37,7 +37,7 @@ alias x='function whereami() {
     echo "To workspace:\t$(($DEEP-4)) dirs";
 }; whereami'
 
-# Network bounce 
+# Network bounce
 alias networkbounce='sudo networksetup -setv4off Wi-Fi;sudo  networksetup -setdhcp Wi-Fi'
 
 #
@@ -62,6 +62,48 @@ alias ss='http-server .'
 alias arti='echo "AD Username: " && read AD_LOGIN && echo "AD Password: " && read -s AD_PASSWORD && curl -u "$AD_LOGIN:$AD_PASSWORD" https://artifactory.foxsports.com.au/api/npm/auth | sed -n "1p" | sed -e "s,_auth = ,,g" | read authstr && printf "{\n  \"auths\" : {\n    \"https://artifactory.foxsports.com.au:5003\" : {\n      \"auth\" : \"" >! ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"artifactory.foxsports.com.au:5001\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"https://artifactory.foxsports.com.au:5001\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    },\n    \"artifactory.foxsports.com.au:5003\" : {\n      \"auth\" : \"" >> ~/.docker/config.json && printf "$authstr" >> ~/.docker/config.json && printf "\"\n    }\n  }\n}" >> ~/.docker/config.json && unset -v authstr && unset -v AD_LOGIN AD_PASSWORD authstr'
 
 # alias sydtime='sudo systemsetup -settimezone Australia/Sydney'
+
+purge() {
+    echo "Purge a file (Reminder: did you turn VPN on?)\nUsage: purge [f]";
+    echo "([f]oxsports is hawk only really)\n"
+
+    if [ $1 ]
+    then
+        ACC="foxsports";
+    else
+        ACC="streamotion";
+    fi
+
+    echo "Comma-separated files to purge:"
+    read FILESTRING;
+    if [ ! $FILESTRING ]
+    then
+        echo "You must specify at least one file! Exiting ...";
+    else
+        echo "Purging on account:\n  $ACC \nFiles:";
+        FILEARRAY=(${(s/,/)FILESTRING});
+        FILES="";
+
+        for VAL in "${FILEARRAY[@]}"; do
+            TRIMVAL="${VAL// /}";
+            echo "  ${TRIMVAL}";
+            FILES+="\"${TRIMVAL}\", ";
+        done
+
+        FILES="${FILES%??}";
+
+        curl -k -X POST \
+            https://fsdevfe01.foxsports.com.au/akamai/fast-purge \
+            -H 'Content-Type: application/json' \
+            -H 'access-header: service-developer' \
+            -d "{\"account\":\"$ACC\", \"files\":[$FILES]}" \
+            --silent \
+            | python3 -m json.tool
+    fi
+}
+
+alias stagepurge='echo "Purging Staging Fiso Version\n" && purge https://resources.streamotion.com.au/staging/common/web-server/fiso-versions.json'
+alias prodpurge='echo "Purging Staging Fiso Version\n" && purge https://resources.streamotion.com.au/production/common/web-server/fiso-versions.json'
 
 alias nw='npm-why'
 
