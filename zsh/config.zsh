@@ -23,7 +23,6 @@ setopt PROMPT_SUBST
 setopt CORRECT
 setopt IGNORE_EOF
 
-
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
 setopt complete_aliases
